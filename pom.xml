@@ -129,9 +129,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <scope>compile</scope>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
         </dependency>
 
         <dependency>
