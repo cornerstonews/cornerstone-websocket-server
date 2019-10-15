@@ -24,11 +24,19 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.glassfish.tyrus>1.15</org.glassfish.tyrus>
     </properties>
 
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>net.sourceforge.javadpkg</groupId>
                 <artifactId>dpkg-maven-plugin</artifactId>
@@ -119,13 +127,13 @@
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
             <artifactId>tyrus-server</artifactId>
-            <version>1.15</version>
+            <version>${org.glassfish.tyrus}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
             <artifactId>tyrus-container-grizzly-server</artifactId>
-            <version>1.15</version>
+            <version>${org.glassfish.tyrus}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
