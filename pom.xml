@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cornerstone-websocket-server</artifactId>
@@ -11,7 +10,7 @@
     <parent>
         <groupId>com.github.cornerstonews</groupId>
         <artifactId>cornerstone-project</artifactId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.1.0</version>
         <relativePath>../cornerstone-project/pom.xml</relativePath>
     </parent>
 
@@ -19,7 +18,7 @@
         <connection>scm:git:git@github.com:cornerstonews/cornerstone-websocket-server.git</connection>
         <developerConnection>scm:git:git@github.com:cornerstonews/cornerstone-websocket-server.git</developerConnection>
         <url>https://github.com/cornerstonews/cornerstone-websocket-server</url>
-        <tag>HEAD</tag>
+        <tag>cornerstone-websocket-server-1.1.0</tag>
     </scm>
 
     <properties>
@@ -111,8 +110,8 @@
                                     </entry>
                                 </entries>
                             </data>
-                            <changeLog></changeLog>
-                            <copyright></copyright>
+                            <changeLog />
+                            <copyright />
                         </configuration>
                     </execution>
                 </executions>
