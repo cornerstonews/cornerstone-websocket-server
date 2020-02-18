@@ -1,0 +1,15 @@
+[Unit]
+Description=Cornerstone Websocket Server
+After=network.target
+
+[Service]
+Type=simple
+User=cornerstonews
+Group=cornerstonews
+WorkingDirectory=/usr/share/java/cornerstonews/websocket-server
+PIDFile=/var/run/cornerstone-websocket-server.pid
+ExecStart=/usr/bin/java $JAVA_OPTS -cp "/usr/share/java/cornerstonews/websocket-server:/usr/share/java/cornerstonews/websocket-server/*" com.github.cornerstonews.websocket.WebsocketServerService
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## Stop cornerstone-websocket-server service
+/bin/systemctl stop cornerstone-websocket-server
+/bin/systemctl disable cornerstone-websocket-server
+/bin/systemctl daemon-reload
