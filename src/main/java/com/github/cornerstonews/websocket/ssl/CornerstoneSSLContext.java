@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -28,8 +29,11 @@ public class CornerstoneSSLContext {
         try {
             PrivateKey certificateKey = new PEMFile(this.certificateKeyFilePath).toPrivateKey();
             Certificate certificate = new PEMFile(this.certificateFilePath).toCertificates().get(0);
-            List<Certificate> caCertificates = new PEMFile(this.certificateChainFilePath).toCertificates();
-
+            List<Certificate> caCertificates = new ArrayList<>();
+            if(this.certificateChainFilePath != null) {
+                caCertificates = new PEMFile(this.certificateChainFilePath).toCertificates();
+            }
+            
             KeyStore keyStore = KeyStore.getInstance("JKS");
             keyStore.load(null, null);
             int i = 0;
