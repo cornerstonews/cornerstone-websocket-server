@@ -8,7 +8,7 @@
 	var ws;
 
 	function openSocket() {
-		var url = "ws://localhost:8888/websocket";
+		var url = document.getElementById('url').value;
 		ws = new WebSocket(url);
 
 		ws.onopen = function() {
@@ -53,7 +53,9 @@
 <body>
     <h1>WebSocket Test Client</h1>
 
+
     <p>
+        <input id="url" type="text" value="ws://localhost:8888/websocket" size="100"> <br />
         <button onclick="openSocket()">Open Connection</button>
         <button onclick="closeSocket()">Close Connection</button>
     </p>
