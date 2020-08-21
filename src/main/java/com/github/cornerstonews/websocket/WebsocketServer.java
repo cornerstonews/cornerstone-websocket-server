@@ -1,5 +1,6 @@
 package com.github.cornerstonews.websocket;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -87,6 +88,15 @@ public class WebsocketServer {
             this.server.stop();
             this.server = null;
             LOG.debug("Websocket Server Stopped.");
+        }
+        
+        if(keyStore != null) {
+            try {
+                File keystoreFile = new File(keyStore.getKeystore());
+                keystoreFile.delete();
+            } catch (Exception e) {
+                LOG.warn("Error deleting keystore file: ", e.getMessage());
+            }
         }
     }
 

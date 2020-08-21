@@ -60,8 +60,6 @@ public class WebsocketSSLTestServer {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        
         WebsocketSSLTestServer websocketServerService = WebsocketSSLTestServer.getInstance();
         websocketServerService.start();
 
