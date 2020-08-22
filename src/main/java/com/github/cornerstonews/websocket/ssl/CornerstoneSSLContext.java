@@ -46,6 +46,7 @@ public class CornerstoneSSLContext {
                     .limit(passwordLength).collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 
             File temp = File.createTempFile(".CornerstoneKeyStore", ".jks");
+            temp.deleteOnExit();
             keyStore.setKeyEntry("client-key", certificateKey, randomPassword.toCharArray(), new Certificate[] { certificate });
             keyStore.store(new FileOutputStream(temp), randomPassword.toCharArray());
 

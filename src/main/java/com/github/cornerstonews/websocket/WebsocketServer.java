@@ -1,6 +1,5 @@
 package com.github.cornerstonews.websocket;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class WebsocketServer {
 
     // https://github.com/tyrus-project/tyrus/blob/master/server/src/main/java/org/glassfish/tyrus/server/Server.java
 
-    private final static Logger LOG = LogManager.getLogger(WebsocketServer.class);
+    private final static Logger LOGGER = LogManager.getLogger(WebsocketServer.class);
 
     private static final int DEFAULT_PORT = 8888;
     private static final String DEFAULT_HOST_NAME = "localhost";
@@ -35,7 +34,6 @@ public class WebsocketServer {
     private volatile int port;
     private final String contextPath;
     private final CornerstoneKeyStore keyStore;
-    
 
     private ServerContainer server;
 
@@ -43,11 +41,13 @@ public class WebsocketServer {
         this("localhost", 8888, null, "/", new HashMap<String, Object>(), new Class<?>[] {});
     }
 
-    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties, Class<?>... endpointClasses) {
+    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
+            Class<?>... endpointClasses) {
         this(hostName, serverPort, sslContext, contextPath, properties, new HashSet<Class<?>>(Arrays.asList(endpointClasses)));
     }
 
-    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties, Set<Class<?>> endpointClasses) {
+    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
+            Set<Class<?>> endpointClasses) {
         this.hostName = hostName == null ? DEFAULT_HOST_NAME : hostName;
         if (port <= 0) {
             this.port = DEFAULT_PORT;
@@ -75,7 +75,8 @@ public class WebsocketServer {
                     this.port = ((TyrusServerContainer) server).getPort();
                 }
 
-                LOG.info("WebSocket server started.");
+                LOGGER.info("WebSocket server started.");
+                LOGGER.info("WebSocket URLs start with " + this.keyStore == null ? "ws" : "wss" + "://" + this.hostName + ":" + this.port);
 
             }
         } catch (IOException e) {
@@ -87,16 +88,7 @@ public class WebsocketServer {
         if (this.server != null) {
             this.server.stop();
             this.server = null;
-            LOG.debug("Websocket Server Stopped.");
-        }
-        
-        if(keyStore != null) {
-            try {
-                File keystoreFile = new File(keyStore.getKeystore());
-                keystoreFile.delete();
-            } catch (Exception e) {
-                LOG.warn("Error deleting keystore file: ", e.getMessage());
-            }
+            LOGGER.debug("Websocket Server Stopped.");
         }
     }
 
