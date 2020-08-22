@@ -24,14 +24,14 @@ public class WebsocketServer {
 
     private final static Logger LOGGER = LogManager.getLogger(WebsocketServer.class);
 
-    private static final int DEFAULT_PORT = 8888;
-    private static final String DEFAULT_HOST_NAME = "localhost";
+    private static final String DEFAULT_BIND_IP = "localhost";
+    private static final int DEFAULT_BIND_PORT = 8888;
     private static final String DEFAULT_CONTEXT_PATH = "/";
 
     private final Map<String, Object> properties;
     private final Set<Class<?>> endpointClasses;
-    private final String hostName;
-    private volatile int port;
+    private final String serverIp;
+    private volatile int serverPort;
     private final String contextPath;
     private final CornerstoneKeyStore keyStore;
 
@@ -41,18 +41,18 @@ public class WebsocketServer {
         this("localhost", 8888, null, "/", new HashMap<String, Object>(), new Class<?>[] {});
     }
 
-    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
+    public WebsocketServer(String bindIp, int bindPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
             Class<?>... endpointClasses) {
-        this(hostName, serverPort, sslContext, contextPath, properties, new HashSet<Class<?>>(Arrays.asList(endpointClasses)));
+        this(bindIp, bindPort, sslContext, contextPath, properties, new HashSet<Class<?>>(Arrays.asList(endpointClasses)));
     }
 
-    public WebsocketServer(String hostName, int serverPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
+    public WebsocketServer(String bindIp, int bindPort, CornerstoneSSLContext sslContext, String contextPath, Map<String, Object> properties,
             Set<Class<?>> endpointClasses) {
-        this.hostName = hostName == null ? DEFAULT_HOST_NAME : hostName;
-        if (port <= 0) {
-            this.port = DEFAULT_PORT;
+        this.serverIp = bindIp == null ? DEFAULT_BIND_IP : bindIp;
+        if (bindPort <= 0) {
+            this.serverPort = DEFAULT_BIND_PORT;
         } else {
-            this.port = port;
+            this.serverPort = bindPort;
         }
         this.keyStore = sslContext == null ? null : sslContext.getKeyStore();
         this.contextPath = contextPath == null ? DEFAULT_CONTEXT_PATH : contextPath;
@@ -69,14 +69,14 @@ public class WebsocketServer {
                     server.addEndpoint(clazz);
                 }
 
-                server.start(contextPath, port);
+                server.start(contextPath, this.serverPort);
 
                 if (server instanceof TyrusServerContainer) {
-                    this.port = ((TyrusServerContainer) server).getPort();
+                    this.serverPort = ((TyrusServerContainer) server).getPort();
                 }
 
                 LOGGER.info("WebSocket server started.");
-                LOGGER.info("WebSocket URLs start with " + this.keyStore == null ? "ws" : "wss" + "://" + this.hostName + ":" + this.port);
+                LOGGER.info("WebSocket URLs start with " + this.keyStore == null ? "ws" : "wss" + "://" + this.serverIp + ":" + this.serverPort);
 
             }
         } catch (IOException e) {
