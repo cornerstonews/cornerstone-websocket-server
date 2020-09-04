@@ -9,7 +9,7 @@ import javax.websocket.DeploymentException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.cornerstonews.websocket.ssl.CornerstoneSSLContext;
+import com.github.cornerstonews.ssl.CornerstoneSSLContext;
 
 public class WebsocketSSLTestServer {
 

@@ -15,8 +15,8 @@ import org.glassfish.tyrus.container.grizzly.server.CornerstoneGrizzlyServerCont
 import org.glassfish.tyrus.server.TyrusServerContainer;
 import org.glassfish.tyrus.spi.ServerContainer;
 
-import com.github.cornerstonews.websocket.ssl.CornerstoneKeyStore;
-import com.github.cornerstonews.websocket.ssl.CornerstoneSSLContext;
+import com.github.cornerstonews.ssl.CornerstoneKeyStore;
+import com.github.cornerstonews.ssl.CornerstoneSSLContext;
 
 public class WebsocketServer {
 
