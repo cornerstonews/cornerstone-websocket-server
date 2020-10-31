@@ -9,25 +9,25 @@ import javax.websocket.DeploymentException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class WebsocketServerService {
+public class WebsocketTestServer {
 
-    private final static Logger LOG = LogManager.getLogger(WebsocketServerService.class);
+    private final static Logger LOG = LogManager.getLogger(WebsocketTestServer.class);
 
-    private final static WebsocketServerService websocketServerService = new WebsocketServerService();
+    private final static WebsocketTestServer websocketServerService = new WebsocketTestServer();
 
     private WebsocketServer websocketServer;
 
-    private WebsocketServerService() {
+    private WebsocketTestServer() {
     }
 
-    private static WebsocketServerService getInstance() {
+    private static WebsocketTestServer getInstance() {
         return websocketServerService;
     }
 
     public void start() throws DeploymentException {
         LOG.info("Starting Websocket Server.");
         this.addShutdownHook();
-        this.websocketServer = new WebsocketServer("localhost", 8888, "/", new HashMap<String, Object>(), WebsocketServerEndpoint.class);
+        this.websocketServer = new WebsocketServer("localhost", 8888, null, "/", new HashMap<String, Object>(), WebsocketServerEndpoint.class);
         this.websocketServer.start();
     }
 
@@ -53,7 +53,7 @@ public class WebsocketServerService {
     }
 
     public static void main(String[] args) throws Exception {
-        WebsocketServerService websocketServerService = WebsocketServerService.getInstance();
+        WebsocketTestServer websocketServerService = WebsocketTestServer.getInstance();
         websocketServerService.start();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
