@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.github.cornerstonews</groupId>
         <artifactId>cornerstone-project</artifactId>
-        <version>1.2.1</version>
+        <version>1.3.0</version>
         <relativePath>../cornerstone-project/pom.xml</relativePath>
     </parent>
 
@@ -18,12 +18,12 @@
         <connection>scm:git:git@github.com:cornerstonews/cornerstone-websocket-server.git</connection>
         <developerConnection>scm:git:git@github.com:cornerstonews/cornerstone-websocket-server.git</developerConnection>
         <url>https://github.com/cornerstonews/cornerstone-websocket-server</url>
-        <tag>cornerstone-websocket-server-1.2.1</tag>
-    </scm>
+      <tag>cornerstone-websocket-server-1.3.0</tag>
+  </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.glassfish.tyrus>1.17</org.glassfish.tyrus>
+        <org.glassfish.tyrus>1.18</org.glassfish.tyrus>
     </properties>
 
     <build>
@@ -126,7 +126,7 @@
         <dependency>
             <groupId>com.github.cornerstonews</groupId>
             <artifactId>cornerstone-ssl</artifactId>
-            <version>1.2.0</version>
+            <version>1.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
